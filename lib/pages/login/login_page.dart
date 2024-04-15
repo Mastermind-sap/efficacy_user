@@ -24,8 +24,9 @@ class _LoginPageState extends State<LoginPage> {
     double width = size.width;
     double height = size.height;
     //size constants
-    double avatarRadius = width * 0.15;
+    double avatarRadius = width * 0.06;
     double gap = height * 0.05;
+    double smallGap = width * 0.05;
     double messageFieldWidth = 0.85;
 
     return PopScope(
@@ -40,20 +41,38 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       child: Scaffold(
+        appBar: AppBar(
+          // centerTitle: true,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                radius: avatarRadius,
+                child: Image.asset(Assets.efficacyUserLogoImagePath),
+              ),
+              Text(
+                "Efficacy",
+                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      color: dark,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+            ].separate(smallGap),
+          ),
+        ),
         body: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                  radius: avatarRadius,
-                  child: Image.asset(Assets.efficacyUserLogoImagePath),
-                ),
                 Text(
-                  "Hey! Welcome",
-                  style: Theme.of(context).textTheme.displaySmall,
+                  "Sign In.\nStay Connected.",
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        color: dark,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 const LoginForm(),
               ].separate(gap),

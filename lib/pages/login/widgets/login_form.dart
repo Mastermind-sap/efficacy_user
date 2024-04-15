@@ -78,18 +78,21 @@ class LoginFormState extends State<LoginForm> {
                         )),
                     prefixIcon: Icons.lock,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, ForgotPasswordPage.routeName);
-                    },
-                    child: Text(
-                      "Forgot password?",
-                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                            decoration: TextDecoration.underline,
-                            color: dark,
-                            decorationColor: dark,
-                          ),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, ForgotPasswordPage.routeName);
+                      },
+                      child: Text(
+                        "Forgot password?",
+                        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                              decoration: TextDecoration.underline,
+                              color: dark,
+                              decorationColor: dark,
+                            ),
+                      ),
                     ),
                   ),
                   Container(

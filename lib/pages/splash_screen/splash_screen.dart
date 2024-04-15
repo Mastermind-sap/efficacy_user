@@ -68,26 +68,35 @@ class _SplashScreenState extends State<SplashScreen> {
     final double width = size.width;
     final double height = size.height;
     //size constants
-    final double avatarRadius = width * 0.25;
+    final double avatarRadius = width * 0.15;
     final double gap = height * 0.03;
+    final double padding = width * 0.02;
 
     return Scaffold(
+      backgroundColor: lightBgColor,
       body: SizedBox(
         width: width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              radius: avatarRadius,
-              child: Image.asset(Assets.efficacyUserLogoImagePath),
+        child: Padding(
+          padding: EdgeInsets.all(padding),
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundColor: lightBgColor,
+                  radius: avatarRadius,
+                  child: Image.asset(Assets.efficacyUserRoundLogoImagePath),
+                ),
+                Text(
+                  "Efficacy",
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                        color: dark,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ].separate(gap),
             ),
-            Text(
-              "Efficacy",
-              style: Theme.of(context).textTheme.displayMedium,
-            ),
-          ].separate(gap),
+          ),
         ),
       ),
     );

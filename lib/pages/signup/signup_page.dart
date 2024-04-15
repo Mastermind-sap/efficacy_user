@@ -305,8 +305,11 @@ class _SignUpPageUserDetailsState extends State<SignUpPage> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.popAndPushNamed(
-                                context, LoginPage.routeName);
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              LoginPage.routeName,
+                              (Route<dynamic> route) => false,
+                            );
                           },
                           child: RichText(
                             text: const TextSpan(
