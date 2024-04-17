@@ -3,6 +3,7 @@ import 'package:efficacy_user/pages/login/widgets/login_form.dart';
 import 'package:efficacy_user/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   //route
@@ -25,6 +26,8 @@ class _LoginPageState extends State<LoginPage> {
     double height = size.height;
     //size constants
     double avatarRadius = width * 0.06;
+    double animationHeight = height * 0.2;
+    double animationWidth = width * 0.8;
     double gap = height * 0.05;
     double smallGap = width * 0.05;
     double messageFieldWidth = 0.85;
@@ -53,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text(
                 "Efficacy",
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: dark,
                       fontWeight: FontWeight.bold,
                     ),
@@ -73,6 +76,11 @@ class _LoginPageState extends State<LoginPage> {
                         color: dark,
                         fontWeight: FontWeight.bold,
                       ),
+                ),
+                Lottie.asset(
+                  Assets.loginPageAnimationLottie,
+                  width: animationWidth,
+                  height: animationHeight,
                 ),
                 const LoginForm(),
               ].separate(gap),

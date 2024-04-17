@@ -1,11 +1,12 @@
 import 'dart:collection';
-import 'dart:convert';
 import 'dart:math';
 
+import 'package:efficacy_user/config/config.dart';
 import 'package:efficacy_user/models/event/event_model.dart';
 import 'package:efficacy_user/pages/homepage/widgets/events/event_card.dart';
 import 'package:flutter/material.dart';
 import 'package:efficacy_user/controllers/controllers.dart';
+import 'package:lottie/lottie.dart';
 
 class EventsShowcasePage extends StatefulWidget {
   final bool showSubscribedOnly;
@@ -83,6 +84,13 @@ class _EventsShowcasePageState extends State<EventsShowcasePage> {
 
   @override
   Widget build(BuildContext context) {
+    //screen height and width
+    Size size = MediaQuery.of(context).size;
+    double width = size.width;
+    double height = size.height;
+    //size constants
+    double animationHeight = height * 0.4;
+    double animationWidth = width * 0.8;
     return ValueListenableBuilder(
         valueListenable: widget.currentEventFilterTypeIndex,
         builder: (context, int currentEventFilterTypeIndex, _) {
@@ -139,8 +147,12 @@ class _EventsShowcasePageState extends State<EventsShowcasePage> {
                           }
                         }
                         if (isLoading) {
-                          return const Center(
-                              child: CircularProgressIndicator());
+                          return Center(
+                              child: Lottie.asset(
+                            Assets.eventLoadingAnimation,
+                            width: animationWidth,
+                            height: animationHeight,
+                          ));
                         }
                         if (snapshot.data != null) {
                           skip = snapshot.data!.skip;
@@ -165,8 +177,27 @@ class _EventsShowcasePageState extends State<EventsShowcasePage> {
                               return SizedBox(
                                 width: screen.width,
                                 height: screen.height * .7,
-                                child:
-                                    const Center(child: Text("No event found")),
+                                child: Center(
+                                    child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Lottie.asset(
+                                      Assets.emptyFeedAnimation1,
+                                      width: animationWidth,
+                                      height: animationHeight,
+                                    ),
+                                    Text(
+                                      "Your Feed is empty!",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall
+                                          ?.copyWith(
+                                            color: dark,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ],
+                                )),
                               );
                             } else if (index == itemCount) {
                               return SizedBox(

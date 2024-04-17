@@ -8,6 +8,7 @@
 class Assets {
   static const String _basePath = "assets";
   static const String _imageBasePath = "images";
+  static const String _animationBasePath = "animations";
   static const String _fontBasePath = "fonts";
 
   static const String googleLogoImagePath =
@@ -25,4 +26,11 @@ class Assets {
 
   static const String efficacyUserHostedImageUrl =
       "https://res.cloudinary.com/dxdyqv2jq/image/upload/v1707659043/app/efficacy_user.png";
+
+  static const String loginPageAnimationLottie =
+      "$_basePath/$_animationBasePath/login.json";
+  static const String emptyFeedAnimation1 =
+      "$_basePath/$_animationBasePath/empty.json";
+  static const String eventLoadingAnimation =
+      "$_basePath/$_animationBasePath/loading.json";
 }
